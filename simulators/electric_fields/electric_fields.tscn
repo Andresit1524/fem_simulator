@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://4u7isidw4mxi"]
+
+[ext_resource type="Script" uid="uid://ka1dakkachpe" path="res://simulators/electric_fields/electric_fields.gd" id="1_s2tr0"]
+[ext_resource type="PackedScene" uid="uid://b1bj5n3u4uut6" path="res://simulators/electric_fields/charge.tscn" id="2_10hef"]
+[ext_resource type="Theme" uid="uid://c7hxjq3eputar" path="res://ui/themes/main_theme.tres" id="3_10hef"]
+[ext_resource type="PackedScene" uid="uid://c6tr3lnbx3704" path="res://simulators/electric_fields/field_arrow.tscn" id="4_fr5h2"]
+
+[node name="ElectricFields" type="Node2D" unique_id=602779563]
+script = ExtResource("1_s2tr0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2129010874]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1242297409]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_10hef")
+
+[node name="FPS" type="Label" parent="CanvasLayer/Control" unique_id=786522118]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 77.0
+offset_bottom = 55.0
+text = "FPS: "
+
+[node name="FieldArrow2" parent="." unique_id=1659075420 instance=ExtResource("4_fr5h2")]
+position = Vector2(577, 355)
+
+[node name="Charge2" parent="." unique_id=366084662 instance=ExtResource("2_10hef")]
+position = Vector2(426, 447)
+
+[node name="Charge" parent="." unique_id=530155563 instance=ExtResource("2_10hef")]
+position = Vector2(793, 196)
+charge_sign = 1

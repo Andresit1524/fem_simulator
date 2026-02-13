@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://c7hxjq3eputar"]
+
+[ext_resource type="FontFile" uid="uid://cderqkrmoi6sm" path="res://fonts/lato-regular.ttf" id="1_fq4u8"]
+
+[resource]
+default_font = ExtResource("1_fq4u8")
+default_font_size = 20

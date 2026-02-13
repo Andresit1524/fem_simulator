@@ -11,12 +11,35 @@ config_version=5
 [application]
 
 config/name="FEM Simulator"
+config/description="Magnetic, electrical phenomena simulator and probably more physics areas"
+config/version="0.1"
+run/main_scene="uid://4u7isidw4mxi"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.09289161, 0.19760957, 0.42765832, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+Constants="*uid://dyx3esh8f3sip"
+Algorithms="*uid://bcdskps5b7khb"
 
 [dotnet]
 
 project/assembly_name="FEM Simulator"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/vector_display_2d/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "teal",
+"res://autoload/": "blue",
+"res://fonts/": "gray",
+"res://simulators/": "purple",
+"res://ui/": "yellow"
+}
 
 [physics]
 
