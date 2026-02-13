@@ -41,4 +41,6 @@ vertical_alignment = 1
 script = ExtResource("3_ey7af")
 target_node = NodePath("..")
 target_property = "force"
-rainbow = true
+vanish_color = true
+clamp_vector = true
+max_length = 1000.0

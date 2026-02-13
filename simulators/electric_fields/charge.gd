@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 	if point_to_mouse:
 		var direction := (get_global_mouse_position() - global_position).normalized()
-		force += direction * 1000 # Fuerza de atracción arbitraria
+		force += direction * 100 # Fuerza de atracción arbitraria
 
 	velocity += force * delta
 	if apply_friction: velocity *= Constants.FRICTION

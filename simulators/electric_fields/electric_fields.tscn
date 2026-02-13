@@ -7,17 +7,32 @@
 
 [node name="ElectricFields" type="Node2D" unique_id=602779563]
 script = ExtResource("1_s2tr0")
+arrow_scene = ExtResource("4_fr5h2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2129010874]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2129010874]
+layer = -1
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1242297409]
+[node name="Background" type="ColorRect" parent="BackgroundLayer" unique_id=1116855800]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=789893005]
+
+[node name="UI" type="Control" parent="UILayer" unique_id=1242297409]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_10hef")
 
-[node name="FPS" type="Label" parent="CanvasLayer/Control" unique_id=786522118]
+[node name="FPSLabel" type="Label" parent="UILayer/UI" unique_id=786522118]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -25,12 +40,16 @@ offset_right = 77.0
 offset_bottom = 55.0
 text = "FPS: "
 
-[node name="FieldArrow2" parent="." unique_id=1659075420 instance=ExtResource("4_fr5h2")]
-position = Vector2(577, 355)
+[node name="Charges" type="Node" parent="." unique_id=995596893]
 
-[node name="Charge2" parent="." unique_id=366084662 instance=ExtResource("2_10hef")]
-position = Vector2(426, 447)
-
-[node name="Charge" parent="." unique_id=530155563 instance=ExtResource("2_10hef")]
-position = Vector2(793, 196)
+[node name="Charge2" parent="Charges" unique_id=1244532094 instance=ExtResource("2_10hef")]
+position = Vector2(894, 277)
 charge_sign = 1
+
+[node name="Charge" parent="Charges" unique_id=530155563 instance=ExtResource("2_10hef")]
+position = Vector2(593, 457)
+
+[node name="Charge3" parent="Charges" unique_id=1043681028 instance=ExtResource("2_10hef")]
+position = Vector2(354, 277)
+
+[node name="Field" type="Node" parent="." unique_id=366315143]
