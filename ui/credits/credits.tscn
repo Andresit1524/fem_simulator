@@ -3,6 +3,13 @@
 [ext_resource type="Theme" uid="uid://c7hxjq3eputar" path="res://ui/themes/main_theme.tres" id="1_2n5wy"]
 [ext_resource type="Texture2D" uid="uid://k0d3qkc0pyaa" path="res://ui/credits/godot_banner.svg" id="2_nnsry"]
 [ext_resource type="Script" uid="uid://d3lown35afexw" path="res://ui/credits/credits.gd" id="2_rqgi2"]
+[ext_resource type="PackedScene" uid="uid://civlww5pwckf6" path="res://ui/components/background.tscn" id="3_sunqn"]
+[ext_resource type="PackedScene" uid="uid://duvwoqi7mjfm8" path="res://ui/components/upper_bar.tscn" id="4_xwmn8"]
+[ext_resource type="FontFile" uid="uid://brv6dxdfw48rw" path="res://fonts/lato-bold.ttf" id="5_xwmn8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cva3t"]
+font = ExtResource("5_xwmn8")
+font_size = 20
 
 [node name="Credits" type="Control" unique_id=16915460]
 layout_mode = 3
@@ -14,24 +21,16 @@ grow_vertical = 2
 theme = ExtResource("1_2n5wy")
 script = ExtResource("2_rqgi2")
 
-[node name="UpperBar" type="ColorRect" parent="." unique_id=720482644]
+[node name="Background" parent="." unique_id=184611907 instance=ExtResource("3_sunqn")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.05882353, 0.4627451, 0.43137255, 1)
+offset_left = 0.0
+offset_top = 0.0
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=505352986]
+[node name="UpperBar" parent="." unique_id=1909622637 instance=ExtResource("4_xwmn8")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 48.0
-grow_horizontal = 2
-color = Color(0.015686275, 0.18431373, 0.18039216, 1)
+grow_horizontal = 1
 
-[node name="Title" type="Label" parent="ColorRect" unique_id=1498109923]
+[node name="Title" type="Label" parent="UpperBar" unique_id=1498109923]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,6 +44,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Créditos"
+label_settings = SubResource("LabelSettings_cva3t")
 
 [node name="Contents" type="HBoxContainer" parent="." unique_id=43569001]
 layout_mode = 1

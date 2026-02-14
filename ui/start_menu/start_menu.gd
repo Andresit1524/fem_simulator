@@ -13,7 +13,7 @@ func _rotate_logo(delta: float) -> void:
 	if icon.rotation >= TAU: icon.rotation -= TAU
 
 func _on_start_button_pressed() -> void:
-	SceneManager.change_to_scene("electric_fields")
+	SceneManager.change_to_scene("simulator_selector")
 
 func _on_credits_button_pressed() -> void:
 	SceneManager.change_to_scene("credits")
