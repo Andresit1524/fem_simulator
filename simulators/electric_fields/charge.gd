@@ -14,10 +14,33 @@ enum Signs {
 @export var point_to_mouse: bool = false ## Las cargas se ven atraidas por el mouse
 @export var apply_friction: bool = false ## Aplica fricción al desplazamiento
 
+@export_group("Show")
+@export var show_value: bool = true: ## Muestra el valor de la carga arriba de él
+	set(value):
+		show_value = value
+		if value_label: value_label.visible = value
+@export var show_force: bool = true: ## Muestra la fuerza neta de la carga como un segmento
+	set(value):
+		show_force = value
+		if vector_display: vector_display.show_vectors = value
+@export var show_axes: bool = false: ## Muestra los componentes en X y Y de la fuerza
+	set(value):
+		show_axes = value
+		if vector_display: vector_display.show_axes = value
+
+@onready var value_label := $Value
+@onready var vector_display := $VectorDisplay2D
+
 var force: Vector2
 
-func _ready():
-	$Value.text = str(value)
+func _ready() -> void:
+	if show_value:
+		value_label.text = str(value)
+	else:
+		value_label.visible = false
+
+	vector_display.show_vectors = show_force
+	vector_display.show_axes = show_axes
 
 	# Configura la carga y el color
 	value *= charge_sign

@@ -1,11 +1,8 @@
 extends Node
 
 @export var field_step: float = 20.0
-@export var charges_node: Node
 
-@onready var field_node := self
-@export var arrow_scene := preload("uid://b1bj5n3u4uut6")
-
+var arrow_scene := preload("uid://c6tr3lnbx3704")
 var viewport: Viewport
 var last_camera_transform: Transform2D
 var boundaries: Dictionary[String, Vector2] = {
@@ -25,6 +22,16 @@ func _process(_delta) -> void:
 	if current_transform != last_camera_transform:
 		last_camera_transform = current_transform
 		_reset_field()
+
+## Elimina o regenera el campo eléctrico de la pantalla
+func toggle_field(activate: bool) -> void:
+	if activate:
+		_get_global_viewport_corners()
+		_instantiate_field()
+		return
+
+	for arrow in get_children():
+		arrow.queue_free()
 
 ## Determina la posición del viewport en el mundo
 func _get_global_viewport_corners() -> void:
@@ -58,29 +65,9 @@ func _instantiate_field() -> void:
 	for point in arrow_coordinates:
 		var arrow = arrow_scene.instantiate()
 		arrow.position = point
-		field_node.add_child(arrow)
-
-## Elimina o regenera el campo eléctrico de la pantalla
-func toggle_field(activate: bool) -> void:
-	if activate:
-		_get_global_viewport_corners()
-		_instantiate_field()
-		return
-
-	for arrow in field_node.get_children():
-		arrow.queue_free()
+		add_child(arrow)
 
 ## Resetea el campo
 func _reset_field() -> void:
 	toggle_field(false)
 	toggle_field(true)
-
-## Muestra u oculta las fuerzas de las cargas
-func toggle_show_forces(activate: bool) -> void:
-	for charge_force in get_tree().get_nodes_in_group("charges_forces"):
-		charge_force.show_vectors = activate
-
-## Muestra u oculta los valores de las cargas
-func toggle_show_charges_values(activate: bool) -> void:
-	for value in get_tree().get_nodes_in_group("charges_values"):
-		value.visible = activate

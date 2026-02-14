@@ -10,6 +10,7 @@
 
 [node name="Charge" type="CharacterBody2D" unique_id=530155563 groups=["charges"]]
 script = ExtResource("1_mbt4m")
+show_value = false
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2132766554]
 scale = Vector2(0.1, 0.1)
@@ -18,7 +19,7 @@ texture = ExtResource("2_4e8e1")
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1598688413]
 shape = SubResource("CircleShape2D_mbt4m")
 
-[node name="Value" type="Label" parent="." unique_id=25515550 groups=["charges_values"]]
+[node name="Value" type="Label" parent="." unique_id=25515550]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -35,7 +36,7 @@ label_settings = SubResource("LabelSettings_mbt4m")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VectorDisplay2D" type="Node2D" parent="." unique_id=2108148098 node_paths=PackedStringArray("target_node") groups=["charges_forces"]]
+[node name="VectorDisplay2D" type="Node2D" parent="." unique_id=2108148098 node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_ey7af")
 target_node = NodePath("..")
 target_property = "force"
