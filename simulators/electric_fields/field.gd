@@ -77,8 +77,8 @@ func _reset_field() -> void:
 
 ## Muestra u oculta las fuerzas de las cargas
 func toggle_show_forces(activate: bool) -> void:
-	for charge in get_tree().get_nodes_in_group("charges_forces"):
-		charge.show_vectors = activate
+	for charge_force in get_tree().get_nodes_in_group("charges_forces"):
+		charge_force.show_vectors = activate
 
 ## Muestra u oculta los valores de las cargas
 func toggle_show_charges_values(activate: bool) -> void:

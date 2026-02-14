@@ -45,7 +45,7 @@ layout_mode = 2
 
 [node name="Content" type="VBoxContainer" parent="UILayer/UI/SettingsPanel/Margin" unique_id=1250940678]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 12
 
 [node name="ExitButton" type="Button" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=1710243313]
 layout_mode = 2
@@ -58,19 +58,22 @@ expand_icon = true
 layout_mode = 2
 text = "FPS: 0"
 
-[node name="ShowFieldButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=776011356]
+[node name="ShowOrHideButtons" type="VBoxContainer" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=2038455719]
+layout_mode = 2
+
+[node name="ShowFieldButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons" unique_id=776011356]
 layout_mode = 2
 button_pressed = true
 text = "Mostrar campo"
 flat = true
 
-[node name="ShowForcesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=1117969839]
+[node name="ShowForcesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons" unique_id=1117969839]
 layout_mode = 2
 button_pressed = true
 text = "Mostrar fuerzas"
 flat = true
 
-[node name="ShowValuesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=104926161]
+[node name="ShowValuesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons" unique_id=104926161]
 layout_mode = 2
 button_pressed = true
 text = "Mostrar valores"
@@ -78,17 +81,16 @@ flat = true
 
 [node name="Charges" type="Node" parent="." unique_id=995596893]
 
+[node name="Charge2" parent="Charges" unique_id=954760521 instance=ExtResource("2_10hef")]
+position = Vector2(738, 551)
+
+[node name="Charge3" parent="Charges" unique_id=511253828 instance=ExtResource("2_10hef")]
+position = Vector2(916, 438)
+
 [node name="Charge" parent="Charges" unique_id=530155563 instance=ExtResource("2_10hef")]
-position = Vector2(1568, 848)
+position = Vector2(1093, 564)
 charge_sign = 1
 value = 2
-
-[node name="Charge3" parent="Charges" unique_id=1043681028 instance=ExtResource("2_10hef")]
-position = Vector2(520, 728)
-charge_sign = 1
-
-[node name="Charge2" parent="Charges" unique_id=954760521 instance=ExtResource("2_10hef")]
-position = Vector2(888, 344)
 
 [node name="Field" type="Node" parent="." unique_id=366315143 node_paths=PackedStringArray("charges_node")]
 script = ExtResource("6_oamdn")
@@ -96,6 +98,6 @@ charges_node = NodePath("../Charges")
 arrow_scene = ExtResource("4_fr5h2")
 
 [connection signal="pressed" from="UILayer/UI/SettingsPanel/Margin/Content/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowFieldButton" to="Field" method="toggle_field"]
-[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowForcesButton" to="Field" method="toggle_show_forces"]
-[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowValuesButton" to="Field" method="toggle_show_charges_values"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons/ShowFieldButton" to="Field" method="toggle_field"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons/ShowForcesButton" to="Field" method="toggle_show_forces"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowOrHideButtons/ShowValuesButton" to="Field" method="toggle_show_charges_values"]
