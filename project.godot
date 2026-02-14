@@ -24,6 +24,11 @@ Constants="*uid://dyx3esh8f3sip"
 Algorithms="*uid://bcdskps5b7khb"
 SceneManager="*uid://crh18u5ggkgbb"
 
+[display]
+
+window/size/mode=3
+window/size/borderless=true
+
 [dotnet]
 
 project/assembly_name="FEM Simulator"

@@ -24,9 +24,9 @@ func _ready():
 	$Sprite.modulate = Color.RED if charge_sign == Signs.POSITIVE else Color.BLUE
 
 func _physics_process(delta: float) -> void:
-	if unmovable: return
-
 	force = Algorithms.net_electric_force(self , position, value)
+
+	if unmovable: return
 
 	if point_to_mouse:
 		var direction := (get_global_mouse_position() - global_position).normalized()

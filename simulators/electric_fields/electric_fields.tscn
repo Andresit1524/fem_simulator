@@ -42,14 +42,15 @@ text = "FPS: "
 
 [node name="Charges" type="Node" parent="." unique_id=995596893]
 
-[node name="Charge2" parent="Charges" unique_id=1244532094 instance=ExtResource("2_10hef")]
-position = Vector2(894, 277)
-charge_sign = 1
-
 [node name="Charge" parent="Charges" unique_id=530155563 instance=ExtResource("2_10hef")]
-position = Vector2(593, 457)
+position = Vector2(923, 525)
+charge_sign = 1
+value = 2
 
 [node name="Charge3" parent="Charges" unique_id=1043681028 instance=ExtResource("2_10hef")]
-position = Vector2(354, 277)
+position = Vector2(363, 344)
+
+[node name="Charge2" parent="Charges" unique_id=954760521 instance=ExtResource("2_10hef")]
+position = Vector2(632, 215)
 
 [node name="Field" type="Node" parent="." unique_id=366315143]
