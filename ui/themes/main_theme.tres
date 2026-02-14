@@ -85,6 +85,13 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3x62"]
+bg_color = Color(0.06666667, 0.36862746, 0.34901962, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehcm8"]
 content_margin_top = 4.0
 content_margin_bottom = 4.0
@@ -179,8 +186,7 @@ corner_radius_bottom_left = 20
 
 [resource]
 default_font = ExtResource("1_fq4u8")
-default_font_size = 20
-Button/font_sizes/font_size = 24
+default_font_size = 24
 Button/styles/disabled = SubResource("StyleBoxFlat_pscce")
 Button/styles/hover = SubResource("StyleBoxFlat_pb6rs")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_36xj7")
@@ -190,8 +196,13 @@ ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_v4asb")
 LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
 LineEdit/styles/normal = SubResource("StyleBoxFlat_krtx0")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_ho37m")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
 OptionButton/styles/normal = SubResource("StyleBoxFlat_gbib7")
 Panel/styles/panel = SubResource("StyleBoxFlat_d4osj")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_q3x62")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ehcm8")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_8m0ti")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_lf5pb")

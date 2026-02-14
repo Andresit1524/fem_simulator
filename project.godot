@@ -26,7 +26,8 @@ SceneManager="*uid://crh18u5ggkgbb"
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/borderless=true
 
 [dotnet]

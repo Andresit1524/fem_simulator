@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_lb6g3"]
 font = ExtResource("4_nhkli")
-font_size = 72
+font_size = 92
 
 [node name="StartMenu" type="Control" unique_id=1556927527]
 layout_mode = 3
@@ -29,40 +29,40 @@ offset_top = 0.0
 modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -361.0
-offset_top = -173.0
-offset_right = 167.0
-offset_bottom = 355.0
+anchor_bottom = 1.0
+offset_left = 1248.0
+offset_top = -272.0
+offset_right = 247.0
+offset_bottom = -433.0
 grow_horizontal = 0
-pivot_offset = Vector2(264, 264)
+pivot_offset = Vector2(460, 460)
 texture = ExtResource("3_ixxch")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1850655367]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.136
-anchor_right = 0.49600002
-anchor_bottom = 0.84000003
-offset_left = 96.0
-offset_top = 7.871994
-offset_right = -7.392029
-offset_bottom = -0.32000732
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 120.0
+offset_right = -1120.0
+offset_bottom = -120.0
 grow_vertical = 2
 alignment = 1
 
 [node name="Title" type="Label" parent="Content" unique_id=1405412069]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "FEM Simulator"
 label_settings = SubResource("LabelSettings_lb6g3")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Space" type="Control" parent="Content" unique_id=1785088153]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
 [node name="Buttons" type="VBoxContainer" parent="Content" unique_id=1486480296]
 layout_mode = 2
@@ -109,35 +109,31 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="QuitPanel" type="Panel" parent="Quit" unique_id=887835564]
+[node name="Panel" type="PanelContainer" parent="Quit" unique_id=507046994]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = -124.0
-offset_right = 176.0
-offset_bottom = 122.18036
+offset_left = -156.0
+offset_top = -81.5
+offset_right = 156.0
+offset_bottom = 81.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Contents" type="VBoxContainer" parent="Quit/QuitPanel" unique_id=844005421]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -99.5
-offset_right = 152.0
-offset_bottom = 99.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Margin" type="MarginContainer" parent="Quit/Panel" unique_id=601065992]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="Quit/QuitPanel/Contents" unique_id=1358970608]
+[node name="Contents" type="VBoxContainer" parent="Quit/Panel/Margin" unique_id=844005421]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Quit/Panel/Margin/Contents" unique_id=1358970608]
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 2.0
@@ -145,12 +141,16 @@ text = "¿Seguro que quieres salir?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="YesButton" type="Button" parent="Quit/QuitPanel/Contents" unique_id=811163896]
+[node name="Control" type="Control" parent="Quit/Panel/Margin/Contents" unique_id=362562501]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="YesButton" type="Button" parent="Quit/Panel/Margin/Contents" unique_id=811163896]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Si"
 
-[node name="NoButton" type="Button" parent="Quit/QuitPanel/Contents" unique_id=1609535645]
+[node name="NoButton" type="Button" parent="Quit/Panel/Margin/Contents" unique_id=1609535645]
 layout_mode = 2
 size_flags_vertical = 3
 text = "No"
@@ -158,5 +158,5 @@ text = "No"
 [connection signal="pressed" from="Content/Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Content/Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Content/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Quit/QuitPanel/Contents/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="Quit/QuitPanel/Contents/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="Quit/Panel/Margin/Contents/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Quit/Panel/Margin/Contents/NoButton" to="." method="_on_no_button_pressed"]

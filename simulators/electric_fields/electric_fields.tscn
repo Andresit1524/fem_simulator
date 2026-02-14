@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://b1bj5n3u4uut6" path="res://simulators/electric_fields/charge.tscn" id="2_10hef"]
 [ext_resource type="Theme" uid="uid://c7hxjq3eputar" path="res://ui/themes/main_theme.tres" id="3_10hef"]
 [ext_resource type="PackedScene" uid="uid://c6tr3lnbx3704" path="res://simulators/electric_fields/field_arrow.tscn" id="4_fr5h2"]
+[ext_resource type="Texture2D" uid="uid://dnave7q17l0ck" path="res://ui/components/arrow.svg" id="4_t5v1n"]
+[ext_resource type="Script" uid="uid://b7sl3g8v82td4" path="res://simulators/electric_fields/field.gd" id="6_oamdn"]
 
 [node name="ElectricFields" type="Node2D" unique_id=602779563]
 script = ExtResource("1_s2tr0")
-arrow_scene = ExtResource("4_fr5h2")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2129010874]
 layer = -1
@@ -32,25 +33,69 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_10hef")
 
-[node name="FPSLabel" type="Label" parent="UILayer/UI" unique_id=786522118]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 77.0
-offset_bottom = 55.0
-text = "FPS: "
+[node name="SettingsPanel" type="PanelContainer" parent="UILayer/UI" unique_id=998840611]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 243.0
+offset_bottom = 102.0
+
+[node name="Margin" type="MarginContainer" parent="UILayer/UI/SettingsPanel" unique_id=1898148242]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="UILayer/UI/SettingsPanel/Margin" unique_id=1250940678]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ExitButton" type="Button" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=1710243313]
+layout_mode = 2
+text = "Salir"
+icon = ExtResource("4_t5v1n")
+flat = true
+expand_icon = true
+
+[node name="FPSLabel" type="Label" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=786522118]
+layout_mode = 2
+text = "FPS: 0"
+
+[node name="ShowFieldButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=776011356]
+layout_mode = 2
+button_pressed = true
+text = "Mostrar campo"
+flat = true
+
+[node name="ShowForcesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=1117969839]
+layout_mode = 2
+button_pressed = true
+text = "Mostrar fuerzas"
+flat = true
+
+[node name="ShowValuesButton" type="CheckButton" parent="UILayer/UI/SettingsPanel/Margin/Content" unique_id=104926161]
+layout_mode = 2
+button_pressed = true
+text = "Mostrar valores"
+flat = true
 
 [node name="Charges" type="Node" parent="." unique_id=995596893]
 
 [node name="Charge" parent="Charges" unique_id=530155563 instance=ExtResource("2_10hef")]
-position = Vector2(923, 525)
+position = Vector2(1568, 848)
 charge_sign = 1
 value = 2
 
 [node name="Charge3" parent="Charges" unique_id=1043681028 instance=ExtResource("2_10hef")]
-position = Vector2(363, 344)
+position = Vector2(520, 728)
+charge_sign = 1
 
 [node name="Charge2" parent="Charges" unique_id=954760521 instance=ExtResource("2_10hef")]
-position = Vector2(632, 215)
+position = Vector2(888, 344)
 
-[node name="Field" type="Node" parent="." unique_id=366315143]
+[node name="Field" type="Node" parent="." unique_id=366315143 node_paths=PackedStringArray("charges_node")]
+script = ExtResource("6_oamdn")
+charges_node = NodePath("../Charges")
+arrow_scene = ExtResource("4_fr5h2")
+
+[connection signal="pressed" from="UILayer/UI/SettingsPanel/Margin/Content/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowFieldButton" to="Field" method="toggle_field"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowForcesButton" to="Field" method="toggle_show_forces"]
+[connection signal="toggled" from="UILayer/UI/SettingsPanel/Margin/Content/ShowValuesButton" to="Field" method="toggle_show_charges_values"]
