@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="FEM Simulator"
-config/description="Magnetic, electrical phenomena simulator and probably more physics areas"
+config/description="Simulador de fenómenos magnéticos, eléctricos y probablemente más áreas de la física"
 config/version="0.1"
 run/main_scene="uid://2ihpv5lofu7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.05882353, 0.4627451, 0.43137255, 1)
+boot_splash/stretch_mode=5
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +29,7 @@ SceneManager="*uid://crh18u5ggkgbb"
 
 window/size/viewport_width=1440
 window/size/viewport_height=810
+window/size/mode=2
 
 [dotnet]
 
