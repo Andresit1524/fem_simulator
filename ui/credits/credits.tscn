@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://d30hla1387ocm"]
+
+[ext_resource type="Theme" uid="uid://c7hxjq3eputar" path="res://ui/themes/main_theme.tres" id="1_2n5wy"]
+[ext_resource type="Texture2D" uid="uid://k0d3qkc0pyaa" path="res://ui/credits/godot_banner.svg" id="2_nnsry"]
+[ext_resource type="Script" uid="uid://d3lown35afexw" path="res://ui/credits/credits.gd" id="2_rqgi2"]
+[ext_resource type="PackedScene" uid="uid://civlww5pwckf6" path="res://ui/components/background.tscn" id="3_sunqn"]
+[ext_resource type="PackedScene" uid="uid://duvwoqi7mjfm8" path="res://ui/components/upper_bar.tscn" id="4_xwmn8"]
+[ext_resource type="FontFile" uid="uid://brv6dxdfw48rw" path="res://fonts/lato-bold.ttf" id="5_xwmn8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cva3t"]
+font = ExtResource("5_xwmn8")
+font_size = 32
+
+[node name="Credits" type="Control" unique_id=16915460]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2n5wy")
+script = ExtResource("2_rqgi2")
+
+[node name="Background" parent="." unique_id=184611907 instance=ExtResource("3_sunqn")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+
+[node name="UpperBar" parent="." unique_id=1909622637 instance=ExtResource("4_xwmn8")]
+layout_mode = 1
+grow_horizontal = 1
+
+[node name="Title" type="Label" parent="UpperBar" unique_id=1498109923]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -16.5
+offset_right = 60.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Créditos"
+label_settings = SubResource("LabelSettings_cva3t")
+
+[node name="Contents" type="HBoxContainer" parent="." unique_id=43569001]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = 60.0
+offset_right = 502.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LeftColumn" type="VBoxContainer" parent="Contents" unique_id=1409512133]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="MadeWithLabel" type="RichTextLabel" parent="Contents/LeftColumn" unique_id=1791133192]
+layout_mode = 2
+text = "Hecho con"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GodotBanner" type="TextureRect" parent="Contents/LeftColumn" unique_id=1709918088]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+texture = ExtResource("2_nnsry")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AuthorLabel" type="RichTextLabel" parent="Contents/LeftColumn" unique_id=251856326]
+layout_mode = 2
+text = "Por Hayran Andrés López"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightColumn" type="VBoxContainer" parent="Contents" unique_id=1844571453]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Content" type="RichTextLabel" parent="Contents/RightColumn" unique_id=2098281992]
+layout_mode = 2
+bbcode_enabled = true
+text = "Supongo que esta es la columna derecha.
+
+Puedes usar  [b]Esc[/b] para salir"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

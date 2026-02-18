@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Scenes" format=3 uid="uid://bn7v8txng2pda"]
+
+[ext_resource type="PackedScene" uid="uid://2ihpv5lofu7" path="res://ui/start_menu/start_menu.tscn" id="1_vwwhh"]
+[ext_resource type="PackedScene" uid="uid://4u7isidw4mxi" path="res://simulators/electric_fields/electric_fields.tscn" id="2_ydkrs"]
+[ext_resource type="PackedScene" uid="uid://d30hla1387ocm" path="res://ui/credits/credits.tscn" id="3_ydkrs"]
+[ext_resource type="PackedScene" uid="uid://dpbplu0rseaq7" path="res://simulators/selector/simulator_selector.tscn" id="4_gf5of"]
+[ext_resource type="Script" uid="uid://cxg35c42opm5k" path="res://autoload/resources/scripts/scenes.gd" id="4_ydkrs"]
+
+[resource]
+script = ExtResource("4_ydkrs")
+items = Dictionary[String, Variant]({
+"credits": ExtResource("3_ydkrs"),
+"electric_fields": ExtResource("2_ydkrs"),
+"simulator_selector": ExtResource("4_gf5of"),
+"start_menu": ExtResource("1_vwwhh")
+})
+metadata/_custom_type_script = "uid://cxg35c42opm5k"
