@@ -22,11 +22,11 @@ enum Signs {
 @export var show_force: bool = true: ## Muestra la fuerza neta de la carga como un segmento
 	set(value):
 		show_force = value
-		if vector_display: vector_display.show_vectors = value
+		if vector_display: vector_display.settings.show_vectors = value
 @export var show_axes: bool = false: ## Muestra los componentes en X y Y de la fuerza
 	set(value):
 		show_axes = value
-		if vector_display: vector_display.show_axes = value
+		if vector_display: vector_display.settings.show_axes = value
 
 @onready var value_label := $Value
 @onready var vector_display := $VectorDisplay2D
@@ -41,8 +41,8 @@ func _ready() -> void:
 	else:
 		value_label.visible = false
 
-	vector_display.show_vectors = show_force
-	vector_display.show_axes = show_axes
+	vector_display.settings.show_vectors = show_force
+	vector_display.settings.show_axes = show_axes
 
 	# Configura la carga y el color
 	value *= charge_sign
@@ -77,7 +77,7 @@ func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
 
 	is_dragging = true
 	offset = global_position - get_global_mouse_position()
-	modulate.a = 0.5
+	modulate = Color(0.5, 0.5, 0.5)
 
 # Desactiva el arrastre de forma global para evitar bugs
 func _input(event: InputEvent) -> void:
@@ -91,4 +91,4 @@ func _input(event: InputEvent) -> void:
 	if not is_drop_event: return
 
 	is_dragging = false
-	modulate.a = 1.0
+	modulate = Color.WHITE

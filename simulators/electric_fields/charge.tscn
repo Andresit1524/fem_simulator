@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://s2a8wu5b2mfs" path="res://simulators/electric_fields/charge.gd" id="1_mbt4m"]
 [ext_resource type="Texture2D" uid="uid://bjevco4n6tudk" path="res://simulators/electric_fields/particle.svg" id="2_4e8e1"]
-[ext_resource type="Script" uid="uid://c5vbvu17d8nr6" path="res://addons/vector_display_2d/vector_display_2d.gd" id="3_ey7af"]
+[ext_resource type="Script" uid="uid://br2qjbnb2iutj" path="res://addons/vector_display_2d/vector_display_2d.gd" id="3_ey7af"]
+[ext_resource type="Script" uid="uid://bvvk84fbwnqt" path="res://addons/vector_display_2d/vector_display_settings.gd" id="3_ukoxy"]
+
+[sub_resource type="Resource" id="Resource_ukoxy"]
+script = ExtResource("3_ukoxy")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbt4m"]
 radius = 10.049875
@@ -14,13 +18,12 @@ input_pickable = true
 script = ExtResource("1_mbt4m")
 show_value = false
 
-[node name="VectorDisplay2D" type="Node2D" parent="." unique_id=2108148098 node_paths=PackedStringArray("target_node")]
+[node name="VectorDisplay2D" type="Node2D" parent="." unique_id=304374364 node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_ey7af")
 target_node = NodePath("..")
 target_property = "force"
-clamp_vector = true
-max_length = 1000.0
-main_color = Color(1, 1, 1, 1)
+settings = SubResource("Resource_ukoxy")
+metadata/_custom_type_script = "uid://br2qjbnb2iutj"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2132766554]
 scale = Vector2(0.1, 0.1)
