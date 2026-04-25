@@ -13,6 +13,7 @@ config_version=5
 config/name="FEM Simulator"
 config/description="Simulador de fenómenos magnéticos, eléctricos y probablemente más áreas de la física"
 config/version="0.1"
+config/tags=PackedStringArray("unal")
 run/main_scene="uid://2ihpv5lofu7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.05882353, 0.4627451, 0.43137255, 1)
