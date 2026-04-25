@@ -8,6 +8,12 @@
 [sub_resource type="Resource" id="Resource_ukoxy"]
 script = ExtResource("3_ukoxy")
 
+[sub_resource type="Curve" id="Curve_ukoxy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ukoxy"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbt4m"]
 radius = 10.049875
 
@@ -28,6 +34,13 @@ metadata/_custom_type_script = "uid://br2qjbnb2iutj"
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2132766554]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4e8e1")
+
+[node name="Trail" type="Line2D" parent="." unique_id=1442015213]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_ukoxy")
+gradient = SubResource("Gradient_ukoxy")
+antialiased = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1598688413]
 shape = SubResource("CircleShape2D_mbt4m")

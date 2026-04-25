@@ -5,6 +5,9 @@ enum Signs {
 	NEGATIVE = -1
 }
 
+## Mínima distancia para el dibujado del trazo de la carga
+const MIN_TRAIL := 1
+
 @export_group("Particle")
 @export var charge_sign: Signs = Signs.NEGATIVE ## Signo de la carga
 @export var value: int = 1 ## Intensidad de la carga
@@ -27,13 +30,18 @@ enum Signs {
 	set(value):
 		show_axes = value
 		if vector_display: vector_display.settings.show_axes = value
+@export var show_trail: bool = true ## Muestra un rastro a medida que el objeto se mueve
+@export var trail_lenght: float = 100.0 ## Longitud máxima del trazo
 
-@onready var value_label := $Value
+@onready var value_label: Label = $Value
 @onready var vector_display := $VectorDisplay2D
+@onready var sprite: Sprite2D = $Sprite
+@onready var trail: Line2D = $Trail
 
 var force: Vector2
 var is_dragging := false
 var offset: Vector2
+var current_trail_pos: Vector2
 
 func _ready() -> void:
 	if show_value:
@@ -46,7 +54,7 @@ func _ready() -> void:
 
 	# Configura la carga y el color
 	value *= charge_sign
-	$Sprite.modulate = Color.RED if charge_sign == Signs.POSITIVE else Color.BLUE
+	sprite.modulate = Color.RED if charge_sign == Signs.POSITIVE else Color.BLUE
 
 func _process(delta: float) -> void:
 	force = Algorithms.net_electric_force(self , position, value)
@@ -61,17 +69,35 @@ func _process(delta: float) -> void:
 
 	if not movable: return
 
+	if show_trail:
+		draw_trail()
+	else:
+		reset_trail()
+
 	velocity += force * delta
 	if apply_friction: velocity *= Constants.FRICTION
 	move_and_slide()
 
+## Dibuja el trazo de la carga
+func draw_trail():
+	if abs(current_trail_pos - global_position).length() < MIN_TRAIL: return
+	trail.add_point(global_position)
+	current_trail_pos = global_position
+
+	if trail.get_point_count() > trail_lenght / MIN_TRAIL:
+		trail.remove_point(0)
+
+## Borra el trazo hecho hasta el momento
+func reset_trail():
+	trail.points = []
+
 # Activa el arrastre con el mouse para el objeto actual
 func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
 	var is_drag_event: bool = (
-		event is InputEventMouseButton
-		and event.button_index == MOUSE_BUTTON_LEFT
-		and event.pressed
-	)
+			event is InputEventMouseButton
+			and event.button_index == MOUSE_BUTTON_LEFT
+			and event.pressed
+		)
 
 	if not is_drag_event: return
 
@@ -82,11 +108,11 @@ func _on_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
 # Desactiva el arrastre de forma global para evitar bugs
 func _input(event: InputEvent) -> void:
 	var is_drop_event: bool = (
-		is_dragging
-		and event is InputEventMouseButton
-		and event.button_index == MOUSE_BUTTON_LEFT
-		and not event.pressed
-	)
+			is_dragging
+			and event is InputEventMouseButton
+			and event.button_index == MOUSE_BUTTON_LEFT
+			and not event.pressed
+		)
 
 	if not is_drop_event: return
 
