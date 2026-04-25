@@ -4,15 +4,9 @@
 [ext_resource type="Script" uid="uid://br2qjbnb2iutj" path="res://addons/vector_display_2d/vector_display_2d.gd" id="2_qgjmn"]
 [ext_resource type="Script" uid="uid://bvvk84fbwnqt" path="res://addons/vector_display_2d/vector_display_settings.gd" id="3_ae3gx"]
 
-[sub_resource type="Resource" id="Resource_3nhvh"]
+[sub_resource type="Resource" id="Resource_ae3gx"]
 script = ExtResource("3_ae3gx")
-width = 0.5
-clamp_vector = true
-max_length = 20.0
-arrowhead_size = 5.0
-rainbow = true
-dimming = true
-dimming_speed = 0.5
+metadata/_custom_type_script = "uid://bvvk84fbwnqt"
 
 [node name="FieldArrow" type="Node2D" unique_id=662743622]
 script = ExtResource("1_vxkwn")
@@ -21,5 +15,4 @@ script = ExtResource("1_vxkwn")
 script = ExtResource("2_qgjmn")
 target_node = NodePath("..")
 target_property = "force"
-settings = SubResource("Resource_3nhvh")
-metadata/_custom_type_script = "uid://lmypycigekqd"
+settings = SubResource("Resource_ae3gx")
