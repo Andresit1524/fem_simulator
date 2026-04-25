@@ -13,7 +13,7 @@ func _refresh_fps(delta: float) -> void:
 	elapsed_time += delta
 
 	if elapsed_time >= REFRESH_FPS_TIME:
-		fps_label.text = "FPS: %d" % round(1 / delta)
+		fps_label.text = "FPS: %d" % Engine.get_frames_per_second()
 		elapsed_time = 0
 
 func _on_exit_button_pressed() -> void:
